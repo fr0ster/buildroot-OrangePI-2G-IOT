@@ -1,0 +1,153 @@
+From a472528ea3cbbbde14baf62d43c43fde96ab1914 Mon Sep 17 00:00:00 2001
+From: Leo Soares <leojrfs@gmail.com>
+Date: Wed, 14 Jun 2017 20:22:54 +0100
+Subject: [PATCH] removed defined but not used functions
+
+---
+ .../rdaw80211/rdacombodev/rda_5991e_power_ctrl.c         | 14 --------------
+ .../rdaw80211/rdacombodev/rda_5991f_power_ctrl.c         | 15 ---------------
+ .../rdaw80211/rdacombodev/rda_5991g_power_ctrl.c         | 16 ----------------
+ drivers/net/wireless/rdaw80211/rdawlan/wland_fwsmgr.c    | 12 ------------
+ 4 files changed, 57 deletions(-)
+
+diff --git a/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991e_power_ctrl.c b/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991e_power_ctrl.c
+index e528388e9e73..fd9168050fea 100644
+--- a/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991e_power_ctrl.c
++++ b/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991e_power_ctrl.c
+@@ -102,10 +102,6 @@ static const u16 wf_rf_setting_5991e[][2] = {
+ };
+ #endif
+ 
+-static const u16 wf_agc_setting_for_dccal_5991e[][2] = {
+-
+-};
+-
+ static const u16 wf_agc_setting_5991e[][2] = {
+ 	{0x3F,  0x0000},
+ #ifdef CHINA_VERSION
+@@ -269,15 +265,6 @@ static const u16 rda_5991e_bt_no_force_swtrx[][2] =
+ };
+ // add for pta
+ 
+-
+-
+-static const u16  bt_dc_cal_5991e[][2] = {
+-	{0x3F,  0x0000},
+-	{0x30,  0x0140},
+-	{0x30,  0x0141},
+-	 DELAY_MS(50)
+-};
+-
+ #endif
+ 
+ static int check_wifi_power_on(void)
+@@ -844,4 +831,3 @@ int rda_5991e_fm_power_off(void)
+ 	printk(KERN_INFO "***rda_fm_power_off failed! \n");
+ 	return -1;
+ }
+-
+diff --git a/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991f_power_ctrl.c b/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991f_power_ctrl.c
+index 3f7be4c3e421..60e456c5eae8 100644
+--- a/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991f_power_ctrl.c
++++ b/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991f_power_ctrl.c
+@@ -105,10 +105,6 @@ static const u16 wf_rf_setting_5991f[][2] = {
+ };
+ #endif
+ 
+-static const u16 wf_agc_setting_for_dccal_5991f[][2] = {
+-
+-};
+-
+ static const u16 wf_agc_setting_5991f[][2] = {
+ 	{0x3F,  0x0000},
+ 	{0x0F,	0x01F7},//lower max gain
+@@ -248,16 +244,6 @@ static const u16 rda_5991f_bt_no_force_swtrx[][2] =
+ #endif
+ 	{0x3f, 0x0000 },
+ };
+-// add for pta
+-
+-
+-
+-static const u16  bt_dc_cal_5991f[][2] = {
+-	{0x3F,  0x0000},
+-	{0x30,  0x0140},
+-	{0x30,  0x0141},
+-	 DELAY_MS(50)
+-};
+ #endif
+ 
+ static int check_wifi_power_on(void)
+@@ -808,4 +794,3 @@ int rda_5991f_fm_power_off(void)
+ 	printk(KERN_INFO "***rda_fm_power_off failed! \n");
+ 	return -1;
+ }
+-
+diff --git a/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991g_power_ctrl.c b/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991g_power_ctrl.c
+index 26c8eda29e99..b977d6ce1f0f 100644
+--- a/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991g_power_ctrl.c
++++ b/drivers/net/wireless/rdaw80211/rdacombodev/rda_5991g_power_ctrl.c
+@@ -150,10 +150,6 @@ static const u16 wf_rf_setting_5991g[][2] = {
+ };
+ #endif
+ 
+-static const u16 wf_agc_setting_for_dccal_5991g[][2] = {
+-
+-};
+-
+ static const u16 wf_agc_setting_5991g[][2] = {
+ 	{0x3F,  0x0000},
+ #ifdef G_CHINA_VERSION
+@@ -307,7 +303,6 @@ static const u16 rda_5991g_bt_force_swtrx[][2] =
+ #endif
+ 	{0x3f, 0x0000 },
+ };
+-// add for pta
+ 
+ // add for pta
+ static const u16 rda_5991g_bt_no_force_swtrx[][2] =
+@@ -320,16 +315,6 @@ static const u16 rda_5991g_bt_no_force_swtrx[][2] =
+ #endif
+ 	{0x3f, 0x0000 },
+ };
+-// add for pta
+-
+-
+-
+-static const u16  bt_dc_cal_5991g[][2] = {
+-	{0x3F,  0x0000},
+-	{0x30,  0x0140},
+-	{0x30,  0x0141},
+-	 DELAY_MS(50)
+-};
+ #endif
+ 
+ static int check_wifi_power_on(void)
+@@ -888,4 +873,3 @@ int rda_5991g_fm_power_off(void)
+ 	printk(KERN_INFO "***rda_fm_power_off failed! \n");
+ 	return -1;
+ }
+-
+diff --git a/drivers/net/wireless/rdaw80211/rdawlan/wland_fwsmgr.c b/drivers/net/wireless/rdaw80211/rdawlan/wland_fwsmgr.c
+index 703bc9aca234..f8a8de1f29b9 100644
+--- a/drivers/net/wireless/rdaw80211/rdawlan/wland_fwsmgr.c
++++ b/drivers/net/wireless/rdaw80211/rdawlan/wland_fwsmgr.c
+@@ -35,18 +35,6 @@
+ #include <wland_p2p.h>
+ #include <wland_cfg80211.h>
+ 
+-/** wland_fws_prio2fifo - mapping from 802.1d priority to firmware fifo index. */
+-static const int wland_fws_prio2fifo[] = {
+-	WLAND_FWS_FIFO_AC_BE,
+-	WLAND_FWS_FIFO_AC_BK,
+-	WLAND_FWS_FIFO_AC_BK,
+-	WLAND_FWS_FIFO_AC_BE,
+-	WLAND_FWS_FIFO_AC_VI,
+-	WLAND_FWS_FIFO_AC_VI,
+-	WLAND_FWS_FIFO_AC_VO,
+-	WLAND_FWS_FIFO_AC_VO
+-};
+-
+ #if 0
+ static u32 fws_hanger_get_free_slot(struct wland_fws_hanger *h)
+ {
