@@ -1,7 +1,7 @@
 ## Important info
 
 It's old repo and it's never will be added into original repo because differntces between this repo and original is enormous.
-I recomend use Vagrant or other virtual machine with Ubintu 16.04 for building of images.
+So I renamed this repo and recomend use Vagrant or other virtual machine with Ubintu 16.04 for building of images.
 I added my Vagrant config for it.
 
 ## How build
@@ -9,6 +9,10 @@ I added my Vagrant config for it.
 $ make orangepi_2g-iot_defconfig
 $ make
 $ sudo dd if=./output/images/sdcard.img of=/dev/sdX bs=1M && sync
+```
+If you prefere docker you can use docker images for building
+```
+$ docker run -v $(pwd)/images:/workdir --rm -it luckycatalex/dev_environment_light:amd64-ubuntu-16.04 bash -c 'git clone https://github.com/fr0ster/buildroot-OrangePI-2G-IOT.git && cd buildroot-OrangePI-2G-IOT && make orangepi_2g-iot_defconfig && make && cd output/images && tar czf /workdir/image.tar.gz *'
 ```
 
 ## Original README
