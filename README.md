@@ -1,13 +1,17 @@
-#Important info
+## Important info
+
 It's old repo and it's never will be added into original repo because differntces between this repo and original is enormous.
 I recomend use Vagrant or other virtual machine with Ubintu 16.04 for building of images.
 I added my Vagrant config for it.
+
 ## How build
+```
 $ make orangepi_2g-iot_defconfig
 $ make
 $ sudo dd if=./output/images/sdcard.img of=/dev/sdX bs=1M && sync
+```
 
-###Original README
+## Original README
 Buildroot is a simple, efficient and easy-to-use tool to generate embedded
 Linux systems through cross-compilation.
 
