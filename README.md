@@ -12,7 +12,7 @@ $ sudo dd if=./output/images/sdcard.img of=/dev/sdX bs=1M && sync
 ```
 If you prefere docker you can use docker images for building
 ```
-$ docker run -v $(pwd)/images:/workdir --rm -it luckycatalex/dev_environment_light:amd64-ubuntu-16.04 bash -c 'git clone https://github.com/fr0ster/buildroot-OrangePI-2G-IOT.git && cd buildroot-OrangePI-2G-IOT && make orangepi_2g-iot_defconfig && make && cd output/images && tar czf /workdir/image.tar.gz *'
+docker run -v $(pwd)/images:/workdir --rm -it luckycatalex/dev_environment_light:amd64-ubuntu-16.04 bash -c 'sudo apt install build-essential cpio unzip bc -y && git clone https://github.com/fr0ster/buildroot-OrangePI-2G-IOT.git && cd buildroot-OrangePI-2G-IOT && make orangepi_2g-iot_defconfig && make && cd output/images && tar czf /workdir/image.tar.gz *'
 ```
 
 ## Original README
